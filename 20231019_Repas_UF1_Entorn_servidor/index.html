@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+
+	<link rel="stylesheet" type="text/css" href="cssbase.css">
+	
+	<title></title>
+
+</head>
+<body>
+	<!---get es el metode i action a ón ho enviem-->
+	<form method="get" action="">
+
+		<!---input es el tipus i name el nom de la variable. Placegholder es el text que surt en gris dins el camp input-->
+		<input type="text" name="nomVariable" placeholder="el teu nom">
+		<br>
+		<input type="text" name="ciutatVariable" placeholder="la teva ciutat">
+		<input id="enviar" type="button" name="botoVariable1">
+	</form>
+	<p></p>
+
+	
+	<div id="formUser">
+	<form method="post" action="">
+
+		<!---input es el tipus i name el nom de la variable. Placegholder es el text que surt en gris dins el camp input-->
+		<input type="text" name="usuariVar" placeholder="User">
+		<br>
+		<input type="text" name="passVar" placeholder="Password">
+		<input id="enviar2" type="button" name="botoVariable2">
+	</form>
+	</div>
+	
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="jquery.min.js"></script>
+    <script>
+		//enviar paràmetres amb GET 
+
+		$("#enviar").click(function(){
+
+			n = $("input[name='nomVariable']").val();
+			c = $("input[name='ciutatVariable']").val();
+
+  			$.get("index2.php?nom="+n+"&ciutat="+c, function(data, status){
+
+				//jquery Lo que ponga aqui a dentro es lo que me va a mostrar en cualquier p de la pagina-->
+				$("p").html(data);
+  			});	
+		});
+	</script>
+	<script>
+		$("#enviar2").click(function(){
+		$.post("index3.php",
+		{
+			usuari : $("input[name='usuariVar']").val(),
+			password : $("input[name='passVar']").val(),
+		},
+		function(data, status){
+
+			$("#formUser").html(data);
+		});
+		});
+	</script>
+
+
+
+
+
+
+</body>
+</html>
+	
